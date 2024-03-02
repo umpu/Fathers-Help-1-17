@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SubView: View {
-    var rectangleSize: CGFloat = 50.0
+    var rectangleSize: CGFloat
     
     var body: some View {
         ZStack {
@@ -37,7 +37,7 @@ struct SubView: View {
 struct ContentView: View {
     var body: some View {
         TabView {
-            SubView()
+            SubView(rectangleSize: 50)
                 .tabItem {
                     Label("First", systemImage: "star.fill")
                 }
