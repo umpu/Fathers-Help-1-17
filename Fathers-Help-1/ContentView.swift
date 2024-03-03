@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct SubView: View {
-    var rectangleSize: CGFloat
-    
     var body: some View {
         ZStack {
             ScrollView {
@@ -21,15 +19,6 @@ struct SubView: View {
                 }
                 .frame(maxWidth: .infinity)
             }
-            .contentMargins(.bottom, rectangleSize)
-            
-            VStack {
-                Spacer()
-                Rectangle()
-                    .frame(height: rectangleSize)
-                    .opacity(0.75)
-                    .foregroundStyle(.red)
-            }
         }
     }
 }
@@ -37,7 +26,13 @@ struct SubView: View {
 struct ContentView: View {
     var body: some View {
         TabView {
-            SubView(rectangleSize: 50)
+            SubView()
+                .safeAreaInset(edge: .bottom) {
+                    Rectangle()
+                        .foregroundColor(.red)
+                        .frame(height: 50)
+                        .opacity(0.8)
+                }
                 .tabItem {
                     Label("First", systemImage: "star.fill")
                 }
