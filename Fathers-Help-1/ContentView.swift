@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct SubView: View {
+struct ContentView: View {
     var body: some View {
-        ZStack {
+        TabView {
             ScrollView {
                 ForEach(1..<101) {
                     Text("\($0)")
@@ -19,23 +19,15 @@ struct SubView: View {
                 }
                 .frame(maxWidth: .infinity)
             }
-        }
-    }
-}
-
-struct ContentView: View {
-    var body: some View {
-        TabView {
-            SubView()
-                .safeAreaInset(edge: .bottom) {
-                    Rectangle()
-                        .foregroundColor(.red)
-                        .frame(height: 50)
-                        .opacity(0.8)
-                }
-                .tabItem {
-                    Label("First", systemImage: "star.fill")
-                }
+            .safeAreaInset(edge: .bottom) {
+                Rectangle()
+                    .foregroundColor(.red)
+                    .frame(height: 50)
+                    .opacity(0.8)
+            }
+            .tabItem {
+                Label("First", systemImage: "star.fill")
+            }
         }
     }
 }
